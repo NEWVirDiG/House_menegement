@@ -1,0 +1,133 @@
+﻿<Page x:Class="House_menegement.Pages.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:House_menegement.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      IsVisibleChanged="Page_IsVisibleChanged"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Page1" >
+
+    <Grid Background="LightBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.8*"/>
+            <ColumnDefinition Width="4*"/>
+
+        </Grid.ColumnDefinitions>
+        <Border MinWidth="170" Margin="3,3,0,0" Background="White"
+         VerticalAlignment="Top" Padding="8" 
+         MaxWidth="305" CornerRadius="20" Height="168" RenderTransformOrigin="0.397,0.502">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0">
+
+                </DropShadowEffect>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Домоуправление" FontSize="26" FontWeight="Bold" RenderTransformOrigin="0.508,0.162" Height="38" Width="238"/>
+                <Image  Source="/Images/Tasks.bmp"
+            Stretch="Fill" Height="93" Width="146" />
+
+
+
+
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Column="1"
+          Name="dtgPayment"
+          AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+        Header="Месяц и год оплаты" Width="*"
+        Binding="{Binding month_and_year_of_payment}"/>
+                <DataGridTextColumn
+        Header="Тип оплаты" Width="*"
+        Binding="{ Binding payment_type.name}"/>
+                <DataGridTextColumn
+        Header="Сумма оплаты" Width="*"
+        Binding="{Binding payment_amount}"/>
+                <DataGridTextColumn
+        Header="Дата оплаты" Width="*"
+        Binding="{Binding date_of_payment}"/>
+                <DataGridTextColumn
+        Header="Площадь" Width="*"
+        Binding="{Binding Apartment.square}"/>
+     
+            <DataGridTemplateColumn Width="auto">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <Button Name="BtnEdit" BorderBrush="Black" Background="#77DDE7" Width="40" Height="40" HorizontalAlignment="Center"  Click="BtnEdit_Click" Style="{StaticResource RoundButton}">
+                                <Image Source="/Images/Vlad.png" Stretch="Fill"/>
+                        </Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+
+
+        <StackPanel 
+     
+     Grid.Row="0"
+             Orientation="Vertical" Margin="0,170,0,0">
+            <Border MinWidth="170" Margin="10" Background="White" Padding="5" 
+         MaxWidth="305" CornerRadius="20" Height="65">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0">
+
+                    </DropShadowEffect>
+                </Border.Effect>
+
+                <TextBlock Text="Фильтры" FontSize="28" FontWeight="Bold" Width="135"  VerticalAlignment="Center"/>
+
+
+            </Border>
+            <Border Background="White" CornerRadius="20" Padding="20" Height="65" Width="305">
+                <ComboBox 
+         Name="Cmbdate_of_payment"
+               SelectionChanged="Cmbdate_of_payment_SelectionChanged"  Height="25" />
+            </Border>
+
+
+            <Border Background="White" Margin="10" CornerRadius="20" Padding="20" Height="65" Width="305">
+                <ComboBox 
+                Name="Cmbpayment_amount"
+                     SelectionChanged="Cmbpayment_amount_SelectionChanged" Height="25" />
+            </Border>
+
+            <Border MinWidth="170" Margin="0" Background="White" Padding="5" 
+     MaxWidth="305" CornerRadius="20" Height="65">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0">
+
+                    </DropShadowEffect>
+                </Border.Effect>
+                <TextBox FontSize="28" FontWeight="Bold" MaxWidth="260" materialDesign:HintAssist.Hint="Поиск" VerticalAlignment="Center" Name="TxTSearch" TextChanged="TxTSearch_TextChanged"/>
+            </Border>
+
+            <Button  Background="White" x:Name="BtnResetFiltr" FontWeight="Bold" Foreground="Black"
+            Content="Сброс фильров" FontSize="22"
+         Margin="0,10,0,0" Height="55" Width="305" 
+             Click="BtnResetFiltr_Click"
+         Style="{StaticResource RoundButton}"/>
+            <Button  Background="LightSkyBlue" x:Name="BtnAdd" FontWeight="Bold" Foreground="Black"
+   Content="Добавление" FontSize="22"
+Margin="0,10,0,0" Height="55" Width="305" 
+                     Click="BtnAdd_Click"
+                      Style="{StaticResource RoundButton}"/>
+            <Button  Background="Blue" x:Name="BtnDel" FontWeight="Bold" Foreground="White"
+   Content="Удаление" FontSize="22"
+Margin="0,10,0,0" Height="55" Width="305" 
+                   Click="BtnDel_Click"
+                      Style="{StaticResource RoundButton}"/>
+            <Button  Background="BlueViolet"  x:Name="BtnList"  FontWeight="Bold" Foreground="White"
+   Content="Предложения" FontSize="22"
+Margin="0,10,0,0" Height="55" Width="305" 
+                   Click="BtnList_Click"
+                      Style="{StaticResource RoundButton}"/>
+        </StackPanel>
+    </Grid>
+</Page>
